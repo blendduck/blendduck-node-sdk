@@ -46,7 +46,7 @@ export class BlendDuck {
       throw new Error('The apiKey is required');
     }
     this.apiKey = apiKey;
-    this.baseUrl = options?.baseUrl ?? 'https://www.blendduck.com/v1';
+    this.baseUrl = options?.baseUrl ?? 'https://blendduck.com/api/v1';
     this.fetchFn = options?.fetch ?? fetch;
     this.projects = new ProjectsAPI(this);
   }
