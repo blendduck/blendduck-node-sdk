@@ -2,7 +2,7 @@ import { nanoid, ElementType, Animation } from './index';
 
 export class Element {
 
-  id: string;
+  id!: string;
   type: ElementType;
   animations: Animation[] = [];
   children?: Element[];
@@ -15,12 +15,15 @@ export class Element {
   opacity: number = 1;
 
   constructor(type: ElementType, properties: Partial<Element> = {}) {
-    const { id, ...rest } = properties ?? {};
     this.type = type;
+    this.initializeProperties(properties);
+  }
+
+  initializeProperties(properties: Partial<Element> = {}) {
+    const { id, ...rest } = properties ?? {};
     Object.assign(this, rest);
     this.id = id ?? nanoid();
   }
-
 
   addAnimation(animation: Animation, pos?: number): boolean {
     this.animations.push(animation);
@@ -55,7 +58,7 @@ export class Element {
       animations: animationsJSON,
       ...rest 
     } = json;
-    const animations = animationsJSON.map((json: any) => {
+    const animations = (animationsJSON ?? []).map((json: any) => {
       return Animation.fromJSON(json);
     });
     return {

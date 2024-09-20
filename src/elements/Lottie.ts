@@ -6,7 +6,8 @@ export class Lottie extends Element {
   url!: string;
 
   constructor(properties: Partial<Lottie> = {}) {
-    super("lottie", properties);
+    super("lottie");
+    this.initializeProperties(properties);
   }
 
   static fromJSON(json: any): Lottie {

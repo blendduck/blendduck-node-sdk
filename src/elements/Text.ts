@@ -30,7 +30,8 @@ export class Text extends Element {
   autoSize: boolean = true;
 
   constructor(properties: Partial<Text> = {}) {
-    super("text", properties);
+    super("text");
+    this.initializeProperties(properties);
   }
 
   static fromJSON(json: any): Text {

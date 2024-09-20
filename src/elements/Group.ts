@@ -8,7 +8,8 @@ export class Group extends Element {
   children: Element[] = [];
 
   constructor(properties: Partial<Group> = {}) {
-    super("group", properties);
+    super("group");
+    this.initializeProperties(properties);
   }
 
   addElement(element: Element, pos?: number): boolean {

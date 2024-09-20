@@ -18,13 +18,13 @@ export enum AnimationType {
   FadeIn = 'fadeIn',
   SlideIn = 'slideIn',
   MaskIn = 'maskIn',
-  ScaleIn = 'scaleIn',
+  ShrinkIn = 'shrinkIn',
   GrowIn = 'growIn',
   Disappear = 'disappear',
   FadeOut = 'fadeOut',
   SlideOut = 'slideOut',
   MaskOut = 'maskOut',
-  ScaleOut = 'scaleOut',
+  ShrinkOut = 'shrinkOut',
   GrowOut = 'growOut',
 }
 

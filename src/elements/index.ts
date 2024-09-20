@@ -5,4 +5,4 @@ export * from "./Emoji";
 export * from "./Lottie";
 export * from "./Group";
 export * from "./Shape";
-export * from "./Addon";
+export * from "./Widget";

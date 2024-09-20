@@ -8,7 +8,8 @@ export class Shape extends Element {
   fill?: ColorStyle;
 
   constructor(properties: Partial<Shape> = {}) {
-    super("shape", properties);
+    super("shape");
+    this.initializeProperties(properties);
   }
 
   static fromJSON(json: any): Shape {

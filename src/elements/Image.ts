@@ -7,7 +7,8 @@ export class Image extends Element {
   url!: string;
 
   constructor(properties: Partial<Image> = {}) {
-    super("image", properties);
+    super("image");
+    this.initializeProperties(properties);
   }
 
   static fromJSON(json: any): Image {

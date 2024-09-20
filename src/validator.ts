@@ -37,8 +37,8 @@ const AnimationSchema = z.object({
   id: z.string(),
   type: z.enum([
     'move','scale','rotate','opacity','color',
-    'appear','fadeIn','slideIn','maskIn','scaleIn', 'growIn',
-    'disappear','fadeOut','slideOut','maskOut','scaleOut', 'growOut']),
+    'appear','fadeIn','slideIn','maskIn','shrinkIn', 'growIn',
+    'disappear','fadeOut','slideOut','maskOut','shrinkOut', 'growOut']),
   startTime: z.number().min(0),
   endTime: z.number().min(0),
   easing: z.string(),
@@ -104,7 +104,7 @@ const ShapeSchema = BaseElementSchema.extend({
   fill: ColorSchema.or(GradientSchema).nullish(),
 });
 
-const AddonSchema = BaseElementSchema.extend({
+const WidgetSchema = BaseElementSchema.extend({
   type: z.literal('addon'),
   package: z.string(),
   widgetId: z.string(),
@@ -119,7 +119,7 @@ const ElementSchema: z.ZodType<Element> = z.lazy(() =>
     ShapeSchema,
     LottieSchema,
     GroupSchema,
-    AddonSchema
+    WidgetSchema
   ])
 );
 
@@ -136,7 +136,7 @@ type Element =
   | z.infer<typeof EmojiSchema>
   | z.infer<typeof LottieSchema>
   | z.infer<typeof ShapeSchema>
-  | z.infer<typeof AddonSchema>
+  | z.infer<typeof WidgetSchema>
   | { type: 'group', id: string, children: Element[] };
 
 
@@ -149,6 +149,10 @@ const AudioSchema = z.object({
   offset: z.number().min(0),
   startTime: z.number().min(0),
   endTime: z.number().min(0),
+  fade: z.object({
+    in: z.coerce.number().default(0),
+    out: z.coerce.number().default(0)
+  }).nullish().default(null),
   volume: z.number().min(0).max(1),
 });
 

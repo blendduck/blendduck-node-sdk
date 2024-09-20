@@ -9,7 +9,8 @@ export class Video extends Element {
   url!: string;
 
   constructor(properties: Partial<Video> = {}) {
-    super("video", properties);
+    super("video");
+    this.initializeProperties(properties);
   }
 
   static fromJSON(json: any): Video {

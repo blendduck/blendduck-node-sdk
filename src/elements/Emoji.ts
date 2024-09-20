@@ -6,7 +6,8 @@ export class Emoji extends Element {
   url!: string;
 
   constructor(properties: Partial<Emoji> = {}) {
-    super("emoji", properties);
+    super("emoji");
+    this.initializeProperties(properties);
   }
 
   static fromJSON(json: any): Emoji {

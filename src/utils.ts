@@ -6,7 +6,7 @@ import {
   Video,
   Emoji,
   Group,
-  Addon,
+  Widget,
   Shape,
   Lottie,
 } from '.';
@@ -32,7 +32,8 @@ export const parseElement = (json: any): Element => {
     case 'group':
       return Group.fromJSON(json)
     case 'addon':
-      return Addon.fromJSON(json)
+    case 'widget':
+      return Widget.fromJSON(json)
     default:
       throw new Error(`invalid Element type ${json?.type}`)
   }
