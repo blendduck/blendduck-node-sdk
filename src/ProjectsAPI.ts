@@ -1,16 +1,15 @@
 import { Project, BlendDuck } from './';
 
 type ProjectListQuery = {
-  userId?: string,
   page?: number,
-  pageSize?: number,
+  limit?: number,
 }
 
 type ProjectListResponse = {
   projects: Project[],
   pagination: {
     page: number,
-    pageSize: number,
+    limit: number,
     total: number,
   }
 }

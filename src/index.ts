@@ -1,4 +1,5 @@
 import { ProjectsAPI } from './ProjectsAPI';
+import { VideosAPI } from './VideosAPI';
 export {
   ElementType,
   AnimationType,
@@ -14,6 +15,10 @@ export { Clip } from './Clip';
 export { Element } from './Element';
 export { Animation } from './Animation';
 export { AudioPlay } from './AudioPlay';
+export {
+  ExportOptions,
+  ExportStatus,
+} from "./VideosAPI";
 export { nanoid } from './utils';
 export * from "./elements";
 export * from "./validator";
@@ -38,6 +43,7 @@ export class BlendDuck {
   apiKey: string;
   baseUrl: string;
   projects: ProjectsAPI;
+  videos: VideosAPI;
   fetchFn: typeof fetch;
 
   constructor(options?: BlendDuckConfig) {
@@ -49,6 +55,7 @@ export class BlendDuck {
     this.baseUrl = options?.baseUrl ?? 'https://blendduck.com/api/v1';
     this.fetchFn = options?.fetch ?? fetch;
     this.projects = new ProjectsAPI(this);
+    this.videos = new VideosAPI(this);
   }
 
   async request<T>(endpoint: string, options: FetchOptions = {}): Promise<T> {
