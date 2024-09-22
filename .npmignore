@@ -4,6 +4,7 @@ src/
 # 测试
 tests/
 *.test.ts
+scripts/
 
 # 配置文件
 tsconfig.json

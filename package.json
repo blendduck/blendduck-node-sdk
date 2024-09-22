@@ -15,11 +15,18 @@
     "src"
   ],
   "private": false,
+  "imports": {},
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "clean": "rimraf dist",
     "api": "ts-node scripts/openapi.ts",
-    "jimu": "ts-node scripts/jimu.ts",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
     "test": "jest",
@@ -27,14 +34,18 @@
     "test:coverage": "jest --coverage",
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "yarn clean && yarn build",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "publish": "npm publish --access public --registry https://registry.npmjs.org"
+  },
+  "dependencies": {
+    "nanoid": "^3",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@asteasolutions/zod-to-openapi": "^7.1.1",
     "@babel/preset-env": "^7.25.3",
     "@types/jest": "^29.5.12",
     "@types/node": "^22.0.2",
-    "@types/node-fetch": "^2.6.11",
     "@typescript-eslint/eslint-plugin": "^6.7.0",
     "@typescript-eslint/parser": "^6.7.0",
     "babel-jest": "^29.7.0",
@@ -52,20 +63,7 @@
     "typescript": "^5.2.2"
   },
   "sideEffects": false,
-  "imports": {},
-  "exports": {
-    ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
-    }
-  },
   "engines": {
     "node": ">=18"
-  },
-  "dependencies": {
-    "nanoid": "^3",
-    "node-fetch": "^3.3.2",
-    "zod": "^3.23.8"
   }
 }

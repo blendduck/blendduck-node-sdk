@@ -7,8 +7,8 @@ export interface ExportOptions {
 }
 
 export enum ExportStatus {
-  Progress = "progress",
-  Success = "success",
+  Processing = "processing",
+  Completed = "success",
   Error = "error",
 }
 

@@ -22,6 +22,10 @@ pids
 # 目录用于测试输出覆盖率
 coverage/
 
+# test
+tests/*
+scripts/openapi.json
+
 # IDE / 编辑器目录
 .idea/
 .vscode/
@@ -42,7 +46,3 @@ Thumbs.db
 
 # Yarn
 .yarn-integrity
-
-# scripts
-scripts/*
-tests/*
