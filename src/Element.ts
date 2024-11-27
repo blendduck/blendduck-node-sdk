@@ -3,6 +3,7 @@ import { nanoid, ElementType, Animation } from './index';
 export class Element {
 
   id!: string;
+  name!: string;
   type: ElementType;
   animations: Animation[] = [];
   children?: Element[];
@@ -23,6 +24,7 @@ export class Element {
     const { id, ...rest } = properties ?? {};
     Object.assign(this, rest);
     this.id = id ?? nanoid();
+    this.name = this.name ?? this.id;
   }
 
   addAnimation(animation: Animation, pos?: number): boolean {
@@ -70,6 +72,7 @@ export class Element {
   toJSON(): any {
     return {
       id: this.id,
+      name: this.name ?? this.id,
       type: this.type,
       x: this.x,
       y: this.y,

@@ -7,7 +7,7 @@ export class Widget extends Element {
   widgetId!: string;
 
   constructor(properties: Partial<Widget> = {}) {
-    super("addon");
+    super('addon');
     this.initializeProperties(properties);
   }
 
@@ -16,8 +16,34 @@ export class Widget extends Element {
     return new Widget(element);
   }
 
+  toExtraJSON() {
+    const props = [
+      'id',
+      'name',
+      'type',
+      'x',
+      'y',
+      'width',
+      'height',
+      'rotation',
+      'scale',
+      'opacity',
+      'animations',
+      'children',
+    ];
+
+    const json: Record<string, any> = {};
+    for (const key in this) {
+      if (this.hasOwnProperty(key) && !props.includes(key)) {
+        json[key] = this[key];
+      }
+    }
+    return json;
+  }
+
   toJSON() {
     return {
+      ...this.toExtraJSON(),
       ...super.toJSON(),
       scope: this.scope,
       widgetId: this.widgetId,

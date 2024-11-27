@@ -1,6 +1,6 @@
 {
   "name": "@blendduck/node-sdk",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The official Node.js library for the BlendDuck API",
   "author": "BlendDuck <support@blendduck.com>",
   "types": "dist/index.d.ts",
